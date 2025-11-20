@@ -15,3 +15,25 @@ class ActorSerializer(serializers.ModelSerializer):
         model = Actor
         fields = "id", "first_name", "last_name"
 
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
+        fields = "id", "name"
+
+class PlaySerializer(serializers.ModelSerializer):
+    genres = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="name",
+    )
+
+    actors = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="full_name",
+    )
+
+    class Meta:
+        model = Play
+        fields = "id", "title", "description", "genres", "actors"
