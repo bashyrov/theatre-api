@@ -12,3 +12,9 @@ class TheatreHall(models.Model):
     def total_seats(self):
         return self.rows * self.seats_per_row
 
+class Genre(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
