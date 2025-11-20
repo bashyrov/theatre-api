@@ -1,7 +1,20 @@
 from rest_framework import viewsets
-from theatre_app.models import TheatreHall, Actor, Genre, Play, Performance, Ticket, Reservation
-from theatre_app.serializers import TheatreHallSerializer, ActorSerializer, GenreSerializer, PlaySerializer, \
-    PerformanceSerializer, TicketSerializer, ReservationSerializer
+from theatre_app.models import (TheatreHall,
+                                Actor,
+                                Genre,
+                                Play,
+                                Performance,
+                                Ticket,
+                                Reservation
+                                )
+from theatre_app.serializers import (TheatreHallSerializer,
+                                     ActorSerializer,
+                                     GenreSerializer,
+                                     PlaySerializer,
+                                     PerformanceSerializer,
+                                     TicketSerializer,
+                                     ReservationSerializer
+                                     )
 
 
 class TheatreHallViewSet(viewsets.ModelViewSet):
