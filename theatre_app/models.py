@@ -14,11 +14,13 @@ class TheatreHall(models.Model):
     def total_seats(self):
         return self.rows * self.seats_per_row
 
+
 class Genre(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 class Actor(models.Model):
     first_name = models.CharField(max_length=100)
@@ -26,6 +28,7 @@ class Actor(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
 
 class Performance(models.Model):
     play = models.ForeignKey('Play', on_delete=models.CASCADE)
@@ -57,6 +60,7 @@ class Ticket(models.Model):
     def __str__(self):
         return f"Seat {self.seat_number} in row {self.row} for {self.performance}"
 
+
 class Play(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
@@ -65,6 +69,7 @@ class Play(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
