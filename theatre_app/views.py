@@ -13,7 +13,7 @@ from theatre_app.serializers import (TheatreHallSerializer,
                                      PlaySerializer,
                                      PerformanceSerializer,
                                      TicketSerializer,
-                                     ReservationSerializer
+                                     ReservationSerializer, TicketDetailSerializer
                                      )
 
 
@@ -44,7 +44,14 @@ class PerformanceViewSet(viewsets.ModelViewSet):
 
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
-    serializer_class = TicketSerializer
+
+    def get_serializer(self, *args, **kwargs):
+        if self.action == 'retrieve':
+            self.serializer_class = TicketDetailSerializer
+        else:
+            self.serializer_class = TicketSerializer
+
+        return super().get_serializer(*args, **kwargs)
 
 
 class ReservationViewSet(viewsets.ModelViewSet):

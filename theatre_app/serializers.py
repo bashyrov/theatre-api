@@ -63,8 +63,13 @@ class TicketSerializer(serializers.ModelSerializer):
         model = Ticket
         fields = "id", "row", "seat_number", "performance", "reservation"
 
+class TicketDetailSerializer(TicketSerializer):
+    performance = PerformanceSerializer(read_only=True, many=False)
+
 
 class ReservationSerializer(serializers.ModelSerializer):
+    tickets = TicketSerializer(many=True, read_only=True, source='ticket_set')
+
     class Meta:
         model = Reservation
-        fields = "id", "created_at", "user"
+        fields = "id", "created_at", "user", "tickets"
