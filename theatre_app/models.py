@@ -59,6 +59,13 @@ class Ticket(models.Model):
         unique_together = ('performance', 'row', 'seat_number')
 
     def clean(self):
+        self.validate_seat()
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
+
+    def validate_seat(self):
         hall = self.performance.theatre_hall
 
         if self.row < 1 or self.row > hall.rows:

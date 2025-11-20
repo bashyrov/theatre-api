@@ -82,14 +82,22 @@ class PerformanceDetailSerializer(serializers.ModelSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    performance_title = serializers.CharField(source="performance.play.title", read_only=True)
+    performance = PerformanceSerializer(read_only=True, many=False)
 
     class Meta:
         model = Ticket
-        fields = "id", "row", "seat_number", "performance_title"
+        fields = "id", "row", "seat_number", "performance"
+
 
 class TicketDetailSerializer(TicketSerializer):
     performance = PerformanceDetailSerializer(read_only=True, many=False)
+
+
+class TicketCreateUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Ticket
+        fields = "id", "row", "seat_number", "performance", "reservation"
 
 
 class ReservationSerializer(serializers.ModelSerializer):
