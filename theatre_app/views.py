@@ -16,9 +16,8 @@ from theatre_app.serializers import (TheatreHallSerializer,
                                      ReservationSerializer,
                                      TicketDetailSerializer,
                                      PerformanceDetailSerializer,
-                                     PlayCreateUpdateSerializer,
                                      PerformanceCreateUpdateSerializer,
-                                     TicketCreateUpdateSerializer
+                                     TicketCreateUpdateSerializer, PlayDetailSerializer, PlayListSerializer
                                      )
 
 
@@ -41,10 +40,13 @@ class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
 
     def get_serializer(self, *args, **kwargs):
-        if self.action in ('create', 'update', 'partial_update'):
-            self.serializer_class = PlayCreateUpdateSerializer
+        if self.action == 'retrieve':
+            self.serializer_class = PlayDetailSerializer
+        elif self.action == 'list':
+            self.serializer_class = PlayListSerializer
         else:
             self.serializer_class = PlaySerializer
+
 
         return super().get_serializer(*args, **kwargs)
 
