@@ -1,0 +1,1887 @@
+[
+  {
+    "model": "theatre_app.theatrehall",
+    "pk": 1,
+    "fields": {
+      "name": "Main Hall",
+      "rows": 10,
+      "seats_per_row": 15
+    }
+  },
+  {
+    "model": "theatre_app.theatrehall",
+    "pk": 2,
+    "fields": {
+      "name": "Small Hall",
+      "rows": 8,
+      "seats_per_row": 10
+    }
+  },
+  {
+    "model": "theatre_app.theatrehall",
+    "pk": 3,
+    "fields": {
+      "name": "Experimental Hall",
+      "rows": 5,
+      "seats_per_row": 8
+    }
+  },
+  {
+    "model": "theatre_app.theatrehall",
+    "pk": 4,
+    "fields": {
+      "name": "Stage A",
+      "rows": 12,
+      "seats_per_row": 14
+    }
+  },
+  {
+    "model": "theatre_app.theatrehall",
+    "pk": 5,
+    "fields": {
+      "name": "Stage B",
+      "rows": 6,
+      "seats_per_row": 12
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Drama"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Comedy"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Tragedy"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Musical"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 5,
+    "fields": {
+      "name": "Fantasy"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 6,
+    "fields": {
+      "name": "Historical"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 7,
+    "fields": {
+      "name": "Satire"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 8,
+    "fields": {
+      "name": "Biography"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 9,
+    "fields": {
+      "name": "Horror"
+    }
+  },
+  {
+    "model": "theatre_app.genre",
+    "pk": 10,
+    "fields": {
+      "name": "Thriller"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 1,
+    "fields": {
+      "first_name": "Name1",
+      "last_name": "Surname1"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 2,
+    "fields": {
+      "first_name": "Name2",
+      "last_name": "Surname2"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 3,
+    "fields": {
+      "first_name": "Name3",
+      "last_name": "Surname3"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 4,
+    "fields": {
+      "first_name": "Name4",
+      "last_name": "Surname4"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 5,
+    "fields": {
+      "first_name": "Name5",
+      "last_name": "Surname5"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 6,
+    "fields": {
+      "first_name": "Name6",
+      "last_name": "Surname6"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 7,
+    "fields": {
+      "first_name": "Name7",
+      "last_name": "Surname7"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 8,
+    "fields": {
+      "first_name": "Name8",
+      "last_name": "Surname8"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 9,
+    "fields": {
+      "first_name": "Name9",
+      "last_name": "Surname9"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 10,
+    "fields": {
+      "first_name": "Name10",
+      "last_name": "Surname10"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 11,
+    "fields": {
+      "first_name": "Name11",
+      "last_name": "Surname11"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 12,
+    "fields": {
+      "first_name": "Name12",
+      "last_name": "Surname12"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 13,
+    "fields": {
+      "first_name": "Name13",
+      "last_name": "Surname13"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 14,
+    "fields": {
+      "first_name": "Name14",
+      "last_name": "Surname14"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 15,
+    "fields": {
+      "first_name": "Name15",
+      "last_name": "Surname15"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 16,
+    "fields": {
+      "first_name": "Name16",
+      "last_name": "Surname16"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 17,
+    "fields": {
+      "first_name": "Name17",
+      "last_name": "Surname17"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 18,
+    "fields": {
+      "first_name": "Name18",
+      "last_name": "Surname18"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 19,
+    "fields": {
+      "first_name": "Name19",
+      "last_name": "Surname19"
+    }
+  },
+  {
+    "model": "theatre_app.actor",
+    "pk": 20,
+    "fields": {
+      "first_name": "Name20",
+      "last_name": "Surname20"
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 1,
+    "fields": {
+      "title": "Play 1",
+      "description": "Description of play 1.",
+      "actors": [
+        5,
+        8,
+        10,
+        17,
+        19
+      ],
+      "genres": [
+        2,
+        9
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 2,
+    "fields": {
+      "title": "Play 2",
+      "description": "Description of play 2.",
+      "actors": [
+        1,
+        16,
+        20,
+        4,
+        14
+      ],
+      "genres": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 3,
+    "fields": {
+      "title": "Play 3",
+      "description": "Description of play 3.",
+      "actors": [
+        5,
+        20,
+        19,
+        6,
+        17
+      ],
+      "genres": [
+        10,
+        2
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 4,
+    "fields": {
+      "title": "Play 4",
+      "description": "Description of play 4.",
+      "actors": [
+        9,
+        16,
+        19,
+        1,
+        20
+      ],
+      "genres": [
+        8,
+        1
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 5,
+    "fields": {
+      "title": "Play 5",
+      "description": "Description of play 5.",
+      "actors": [
+        5,
+        14,
+        18,
+        8,
+        2
+      ],
+      "genres": [
+        4,
+        1
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 6,
+    "fields": {
+      "title": "Play 6",
+      "description": "Description of play 6.",
+      "actors": [
+        7,
+        19,
+        16,
+        13,
+        14
+      ],
+      "genres": [
+        5,
+        1
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 7,
+    "fields": {
+      "title": "Play 7",
+      "description": "Description of play 7.",
+      "actors": [
+        4,
+        10,
+        9,
+        15,
+        6
+      ],
+      "genres": [
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 8,
+    "fields": {
+      "title": "Play 8",
+      "description": "Description of play 8.",
+      "actors": [
+        2,
+        7,
+        3,
+        17,
+        13
+      ],
+      "genres": [
+        1,
+        6
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 9,
+    "fields": {
+      "title": "Play 9",
+      "description": "Description of play 9.",
+      "actors": [
+        3,
+        18,
+        15,
+        1,
+        12
+      ],
+      "genres": [
+        5,
+        7
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.play",
+    "pk": 10,
+    "fields": {
+      "title": "Play 10",
+      "description": "Description of play 10.",
+      "actors": [
+        3,
+        15,
+        12,
+        8,
+        14
+      ],
+      "genres": [
+        4,
+        8
+      ]
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 1,
+    "fields": {
+      "play": 3,
+      "theatre_hall": 5,
+      "show_time": "2025-11-20T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 2,
+    "fields": {
+      "play": 7,
+      "theatre_hall": 4,
+      "show_time": "2025-11-21T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 3,
+    "fields": {
+      "play": 3,
+      "theatre_hall": 3,
+      "show_time": "2025-11-22T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 4,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 3,
+      "show_time": "2025-11-23T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 5,
+    "fields": {
+      "play": 7,
+      "theatre_hall": 2,
+      "show_time": "2025-11-24T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 6,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 3,
+      "show_time": "2025-11-25T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 7,
+    "fields": {
+      "play": 6,
+      "theatre_hall": 1,
+      "show_time": "2025-11-26T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 8,
+    "fields": {
+      "play": 4,
+      "theatre_hall": 1,
+      "show_time": "2025-11-27T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 9,
+    "fields": {
+      "play": 6,
+      "theatre_hall": 1,
+      "show_time": "2025-11-28T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 10,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 5,
+      "show_time": "2025-11-29T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 11,
+    "fields": {
+      "play": 8,
+      "theatre_hall": 1,
+      "show_time": "2025-11-30T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 12,
+    "fields": {
+      "play": 7,
+      "theatre_hall": 5,
+      "show_time": "2025-12-01T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 13,
+    "fields": {
+      "play": 3,
+      "theatre_hall": 2,
+      "show_time": "2025-12-02T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 14,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 4,
+      "show_time": "2025-12-03T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 15,
+    "fields": {
+      "play": 4,
+      "theatre_hall": 5,
+      "show_time": "2025-12-04T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 16,
+    "fields": {
+      "play": 2,
+      "theatre_hall": 1,
+      "show_time": "2025-12-05T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 17,
+    "fields": {
+      "play": 4,
+      "theatre_hall": 3,
+      "show_time": "2025-12-06T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 18,
+    "fields": {
+      "play": 8,
+      "theatre_hall": 2,
+      "show_time": "2025-12-07T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 19,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 4,
+      "show_time": "2025-12-08T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.performance",
+    "pk": 20,
+    "fields": {
+      "play": 1,
+      "theatre_hall": 2,
+      "show_time": "2025-12-09T03:15:35.241971"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2025-11-20T03:15:35.241971",
+      "user": "user1"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2025-11-19T03:15:35.241971",
+      "user": "user2"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 3,
+    "fields": {
+      "created_at": "2025-11-18T03:15:35.241971",
+      "user": "user3"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 4,
+    "fields": {
+      "created_at": "2025-11-17T03:15:35.241971",
+      "user": "user4"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 5,
+    "fields": {
+      "created_at": "2025-11-16T03:15:35.241971",
+      "user": "user5"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 6,
+    "fields": {
+      "created_at": "2025-11-15T03:15:35.241971",
+      "user": "user6"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 7,
+    "fields": {
+      "created_at": "2025-11-14T03:15:35.241971",
+      "user": "user7"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 8,
+    "fields": {
+      "created_at": "2025-11-13T03:15:35.241971",
+      "user": "user8"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 9,
+    "fields": {
+      "created_at": "2025-11-12T03:15:35.241971",
+      "user": "user9"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 10,
+    "fields": {
+      "created_at": "2025-11-11T03:15:35.241971",
+      "user": "user10"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 11,
+    "fields": {
+      "created_at": "2025-11-10T03:15:35.241971",
+      "user": "user11"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 12,
+    "fields": {
+      "created_at": "2025-11-09T03:15:35.241971",
+      "user": "user12"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 13,
+    "fields": {
+      "created_at": "2025-11-08T03:15:35.241971",
+      "user": "user13"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 14,
+    "fields": {
+      "created_at": "2025-11-07T03:15:35.241971",
+      "user": "user14"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 15,
+    "fields": {
+      "created_at": "2025-11-06T03:15:35.241971",
+      "user": "user15"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 16,
+    "fields": {
+      "created_at": "2025-11-05T03:15:35.241971",
+      "user": "user16"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 17,
+    "fields": {
+      "created_at": "2025-11-04T03:15:35.241971",
+      "user": "user17"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 18,
+    "fields": {
+      "created_at": "2025-11-03T03:15:35.241971",
+      "user": "user18"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 19,
+    "fields": {
+      "created_at": "2025-11-02T03:15:35.241971",
+      "user": "user19"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 20,
+    "fields": {
+      "created_at": "2025-11-01T03:15:35.241971",
+      "user": "user20"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 21,
+    "fields": {
+      "created_at": "2025-10-31T03:15:35.241971",
+      "user": "user21"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 22,
+    "fields": {
+      "created_at": "2025-10-30T03:15:35.241971",
+      "user": "user22"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 23,
+    "fields": {
+      "created_at": "2025-10-29T03:15:35.241971",
+      "user": "user23"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 24,
+    "fields": {
+      "created_at": "2025-10-28T03:15:35.241971",
+      "user": "user24"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 25,
+    "fields": {
+      "created_at": "2025-10-27T03:15:35.241971",
+      "user": "user25"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 26,
+    "fields": {
+      "created_at": "2025-10-26T03:15:35.241971",
+      "user": "user26"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 27,
+    "fields": {
+      "created_at": "2025-10-25T03:15:35.241971",
+      "user": "user27"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 28,
+    "fields": {
+      "created_at": "2025-10-24T03:15:35.241971",
+      "user": "user28"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 29,
+    "fields": {
+      "created_at": "2025-10-23T03:15:35.241971",
+      "user": "user29"
+    }
+  },
+  {
+    "model": "theatre_app.reservation",
+    "pk": 30,
+    "fields": {
+      "created_at": "2025-10-22T03:15:35.241971",
+      "user": "user30"
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 1,
+    "fields": {
+      "row": 5,
+      "seat_number": 4,
+      "performance": 3,
+      "reservation": 22
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 2,
+    "fields": {
+      "row": 2,
+      "seat_number": 7,
+      "performance": 19,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 3,
+    "fields": {
+      "row": 4,
+      "seat_number": 4,
+      "performance": 12,
+      "reservation": 24
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 4,
+    "fields": {
+      "row": 4,
+      "seat_number": 3,
+      "performance": 4,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 5,
+    "fields": {
+      "row": 8,
+      "seat_number": 6,
+      "performance": 16,
+      "reservation": 16
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 6,
+    "fields": {
+      "row": 8,
+      "seat_number": 5,
+      "performance": 8,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 7,
+    "fields": {
+      "row": 6,
+      "seat_number": 14,
+      "performance": 18,
+      "reservation": 17
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 8,
+    "fields": {
+      "row": 4,
+      "seat_number": 5,
+      "performance": 9,
+      "reservation": 13
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 9,
+    "fields": {
+      "row": 3,
+      "seat_number": 1,
+      "performance": 1,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 10,
+    "fields": {
+      "row": 2,
+      "seat_number": 13,
+      "performance": 5,
+      "reservation": 7
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 11,
+    "fields": {
+      "row": 1,
+      "seat_number": 2,
+      "performance": 12,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 12,
+    "fields": {
+      "row": 4,
+      "seat_number": 9,
+      "performance": 19,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 13,
+    "fields": {
+      "row": 3,
+      "seat_number": 3,
+      "performance": 19,
+      "reservation": 22
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 14,
+    "fields": {
+      "row": 3,
+      "seat_number": 6,
+      "performance": 1,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 15,
+    "fields": {
+      "row": 4,
+      "seat_number": 1,
+      "performance": 10,
+      "reservation": 4
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 16,
+    "fields": {
+      "row": 4,
+      "seat_number": 3,
+      "performance": 17,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 17,
+    "fields": {
+      "row": 3,
+      "seat_number": 6,
+      "performance": 9,
+      "reservation": 23
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 18,
+    "fields": {
+      "row": 1,
+      "seat_number": 6,
+      "performance": 9,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 19,
+    "fields": {
+      "row": 4,
+      "seat_number": 6,
+      "performance": 18,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 20,
+    "fields": {
+      "row": 3,
+      "seat_number": 8,
+      "performance": 8,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 21,
+    "fields": {
+      "row": 3,
+      "seat_number": 2,
+      "performance": 4,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 22,
+    "fields": {
+      "row": 2,
+      "seat_number": 4,
+      "performance": 6,
+      "reservation": 18
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 23,
+    "fields": {
+      "row": 5,
+      "seat_number": 2,
+      "performance": 15,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 24,
+    "fields": {
+      "row": 3,
+      "seat_number": 5,
+      "performance": 2,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 25,
+    "fields": {
+      "row": 4,
+      "seat_number": 2,
+      "performance": 11,
+      "reservation": 25
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 26,
+    "fields": {
+      "row": 5,
+      "seat_number": 3,
+      "performance": 15,
+      "reservation": 28
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 27,
+    "fields": {
+      "row": 1,
+      "seat_number": 6,
+      "performance": 5,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 28,
+    "fields": {
+      "row": 10,
+      "seat_number": 13,
+      "performance": 18,
+      "reservation": 17
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 29,
+    "fields": {
+      "row": 2,
+      "seat_number": 1,
+      "performance": 12,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 30,
+    "fields": {
+      "row": 2,
+      "seat_number": 6,
+      "performance": 4,
+      "reservation": 30
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 31,
+    "fields": {
+      "row": 2,
+      "seat_number": 1,
+      "performance": 1,
+      "reservation": 17
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 32,
+    "fields": {
+      "row": 1,
+      "seat_number": 4,
+      "performance": 17,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 33,
+    "fields": {
+      "row": 5,
+      "seat_number": 6,
+      "performance": 16,
+      "reservation": 15
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 34,
+    "fields": {
+      "row": 7,
+      "seat_number": 9,
+      "performance": 10,
+      "reservation": 26
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 35,
+    "fields": {
+      "row": 2,
+      "seat_number": 8,
+      "performance": 12,
+      "reservation": 22
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 36,
+    "fields": {
+      "row": 8,
+      "seat_number": 10,
+      "performance": 13,
+      "reservation": 15
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 37,
+    "fields": {
+      "row": 4,
+      "seat_number": 9,
+      "performance": 4,
+      "reservation": 22
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 38,
+    "fields": {
+      "row": 8,
+      "seat_number": 9,
+      "performance": 6,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 39,
+    "fields": {
+      "row": 2,
+      "seat_number": 8,
+      "performance": 6,
+      "reservation": 23
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 40,
+    "fields": {
+      "row": 6,
+      "seat_number": 5,
+      "performance": 6,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 41,
+    "fields": {
+      "row": 2,
+      "seat_number": 7,
+      "performance": 5,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 42,
+    "fields": {
+      "row": 1,
+      "seat_number": 1,
+      "performance": 11,
+      "reservation": 28
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 43,
+    "fields": {
+      "row": 8,
+      "seat_number": 3,
+      "performance": 6,
+      "reservation": 7
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 44,
+    "fields": {
+      "row": 2,
+      "seat_number": 4,
+      "performance": 12,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 45,
+    "fields": {
+      "row": 1,
+      "seat_number": 14,
+      "performance": 18,
+      "reservation": 14
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 46,
+    "fields": {
+      "row": 1,
+      "seat_number": 1,
+      "performance": 9,
+      "reservation": 8
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 47,
+    "fields": {
+      "row": 10,
+      "seat_number": 10,
+      "performance": 15,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 48,
+    "fields": {
+      "row": 5,
+      "seat_number": 4,
+      "performance": 13,
+      "reservation": 14
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 49,
+    "fields": {
+      "row": 4,
+      "seat_number": 15,
+      "performance": 20,
+      "reservation": 17
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 50,
+    "fields": {
+      "row": 1,
+      "seat_number": 3,
+      "performance": 1,
+      "reservation": 21
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 51,
+    "fields": {
+      "row": 2,
+      "seat_number": 7,
+      "performance": 7,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 52,
+    "fields": {
+      "row": 1,
+      "seat_number": 10,
+      "performance": 10,
+      "reservation": 22
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 53,
+    "fields": {
+      "row": 2,
+      "seat_number": 8,
+      "performance": 2,
+      "reservation": 19
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 54,
+    "fields": {
+      "row": 5,
+      "seat_number": 1,
+      "performance": 11,
+      "reservation": 19
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 55,
+    "fields": {
+      "row": 4,
+      "seat_number": 11,
+      "performance": 15,
+      "reservation": 11
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 56,
+    "fields": {
+      "row": 4,
+      "seat_number": 1,
+      "performance": 14,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 57,
+    "fields": {
+      "row": 2,
+      "seat_number": 6,
+      "performance": 2,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 58,
+    "fields": {
+      "row": 8,
+      "seat_number": 8,
+      "performance": 11,
+      "reservation": 27
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 59,
+    "fields": {
+      "row": 5,
+      "seat_number": 4,
+      "performance": 4,
+      "reservation": 29
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 60,
+    "fields": {
+      "row": 11,
+      "seat_number": 4,
+      "performance": 8,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 61,
+    "fields": {
+      "row": 5,
+      "seat_number": 1,
+      "performance": 2,
+      "reservation": 18
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 62,
+    "fields": {
+      "row": 5,
+      "seat_number": 22,
+      "performance": 16,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 63,
+    "fields": {
+      "row": 7,
+      "seat_number": 3,
+      "performance": 11,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 64,
+    "fields": {
+      "row": 2,
+      "seat_number": 9,
+      "performance": 19,
+      "reservation": 14
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 65,
+    "fields": {
+      "row": 11,
+      "seat_number": 11,
+      "performance": 13,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 66,
+    "fields": {
+      "row": 2,
+      "seat_number": 5,
+      "performance": 7,
+      "reservation": 11
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 67,
+    "fields": {
+      "row": 1,
+      "seat_number": 2,
+      "performance": 4,
+      "reservation": 25
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 68,
+    "fields": {
+      "row": 3,
+      "seat_number": 1,
+      "performance": 12,
+      "reservation": 16
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 69,
+    "fields": {
+      "row": 6,
+      "seat_number": 8,
+      "performance": 3,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 70,
+    "fields": {
+      "row": 1,
+      "seat_number": 6,
+      "performance": 6,
+      "reservation": 30
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 71,
+    "fields": {
+      "row": 2,
+      "seat_number": 5,
+      "performance": 19,
+      "reservation": 8
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 72,
+    "fields": {
+      "row": 6,
+      "seat_number": 14,
+      "performance": 10,
+      "reservation": 18
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 73,
+    "fields": {
+      "row": 1,
+      "seat_number": 4,
+      "performance": 19,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 74,
+    "fields": {
+      "row": 4,
+      "seat_number": 6,
+      "performance": 19,
+      "reservation": 17
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 75,
+    "fields": {
+      "row": 5,
+      "seat_number": 8,
+      "performance": 4,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 76,
+    "fields": {
+      "row": 6,
+      "seat_number": 3,
+      "performance": 14,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 77,
+    "fields": {
+      "row": 2,
+      "seat_number": 4,
+      "performance": 2,
+      "reservation": 23
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 78,
+    "fields": {
+      "row": 3,
+      "seat_number": 5,
+      "performance": 14,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 79,
+    "fields": {
+      "row": 1,
+      "seat_number": 10,
+      "performance": 18,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 80,
+    "fields": {
+      "row": 4,
+      "seat_number": 3,
+      "performance": 8,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 81,
+    "fields": {
+      "row": 7,
+      "seat_number": 8,
+      "performance": 10,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 82,
+    "fields": {
+      "row": 2,
+      "seat_number": 1,
+      "performance": 15,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 83,
+    "fields": {
+      "row": 8,
+      "seat_number": 8,
+      "performance": 20,
+      "reservation": 21
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 84,
+    "fields": {
+      "row": 6,
+      "seat_number": 10,
+      "performance": 1,
+      "reservation": 23
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 85,
+    "fields": {
+      "row": 2,
+      "seat_number": 15,
+      "performance": 15,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 86,
+    "fields": {
+      "row": 4,
+      "seat_number": 3,
+      "performance": 11,
+      "reservation": 21
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 87,
+    "fields": {
+      "row": 9,
+      "seat_number": 12,
+      "performance": 3,
+      "reservation": 30
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 88,
+    "fields": {
+      "row": 8,
+      "seat_number": 9,
+      "performance": 16,
+      "reservation": 18
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 89,
+    "fields": {
+      "row": 6,
+      "seat_number": 2,
+      "performance": 9,
+      "reservation": 11
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 90,
+    "fields": {
+      "row": 8,
+      "seat_number": 8,
+      "performance": 6,
+      "reservation": 30
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 91,
+    "fields": {
+      "row": 4,
+      "seat_number": 4,
+      "performance": 1,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 92,
+    "fields": {
+      "row": 3,
+      "seat_number": 2,
+      "performance": 14,
+      "reservation": 30
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 93,
+    "fields": {
+      "row": 7,
+      "seat_number": 8,
+      "performance": 1,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 94,
+    "fields": {
+      "row": 3,
+      "seat_number": 6,
+      "performance": 12,
+      "reservation": 10
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 95,
+    "fields": {
+      "row": 1,
+      "seat_number": 6,
+      "performance": 4,
+      "reservation": 20
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 96,
+    "fields": {
+      "row": 2,
+      "seat_number": 6,
+      "performance": 3,
+      "reservation": 12
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 97,
+    "fields": {
+      "row": 4,
+      "seat_number": 12,
+      "performance": 3,
+      "reservation": 8
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 98,
+    "fields": {
+      "row": 1,
+      "seat_number": 2,
+      "performance": 7,
+      "reservation": 7
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 99,
+    "fields": {
+      "row": 4,
+      "seat_number": 5,
+      "performance": 2,
+      "reservation": 16
+    }
+  },
+  {
+    "model": "theatre_app.ticket",
+    "pk": 100,
+    "fields": {
+      "row": 4,
+      "seat_number": 9,
+      "performance": 15,
+      "reservation": 24
+    }
+  }
+]
