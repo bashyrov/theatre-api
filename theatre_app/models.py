@@ -1,4 +1,6 @@
 from django.db import models
+from rest_framework.exceptions import ValidationError
+
 
 class TheatreHall(models.Model):
     name = models.CharField(max_length=100)
@@ -26,7 +28,7 @@ class Actor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Performance(models.Model):
-    play = models.CharField(max_length=200) #TODO: Change to ForeignKey to Play model when created
+    play = models.ForeignKey('Play', on_delete=models.CASCADE)
     theatre_hall = models.ForeignKey(TheatreHall, on_delete=models.CASCADE)
     show_time = models.DateTimeField()
 
@@ -34,5 +36,39 @@ class Performance(models.Model):
         return f"{self.play} at {self.show_time} in {self.theatre_hall.name}"
 
 
+class Ticket(models.Model):
+    row = models.IntegerField()
+    seat_number = models.IntegerField()
+    performance = models.ForeignKey(Performance, on_delete=models.CASCADE)
+    reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('performance', 'row', 'seat_number')
 
+    def clean(self):
+        hall = self.performance.theatre_hall
+
+        if self.row < 1 or self.row > hall.rows:
+            raise ValidationError("Row number out of range.")
+
+        if self.seat_number < 1 or self.seat_number > hall.seats_per_row:
+            raise ValidationError("Seat number out of range.")
+
+    def __str__(self):
+        return f"Seat {self.seat_number} in row {self.row} for {self.performance}"
+
+class Play(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    actors = models.ManyToManyField(Actor, related_name='plays')
+    genres = models.ManyToManyField(Genre, related_name='plays')
+
+    def __str__(self):
+        return self.title
+
+class Reservation(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.CharField(max_length=100)  #TODO: Change to ForeignKey to User model when created
+
+    def __str__(self):
+        return f"Reservation {self.id} by {self.user} at {self.created_at}"
