@@ -42,6 +42,12 @@ class Performance(models.Model):
     def __str__(self):
         return f"{self.play} at {self.show_time} in {self.theatre_hall.name}"
 
+    @property
+    def available_seats(self):
+        total_seats = self.theatre_hall.total_seats
+        booked_seats = Ticket.objects.filter(performance=self).count()
+        return total_seats - booked_seats
+
 
 class Ticket(models.Model):
     row = models.IntegerField()

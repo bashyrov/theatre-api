@@ -62,7 +62,14 @@ class PerformanceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Performance
-        fields = "id", "play_title", "theatre_hall_name", "show_time"
+        fields = "id", "play_title", "theatre_hall_name", "show_time", "available_seats"
+
+
+class PerformanceCreateUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Performance
+        fields = "id", "play", "theatre_hall", "show_time"
 
 
 class PerformanceDetailSerializer(serializers.ModelSerializer):
@@ -79,7 +86,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ticket
-        fields = "id", "row", "seat_number", "performance_title", "reservation"
+        fields = "id", "row", "seat_number", "performance_title"
 
 class TicketDetailSerializer(TicketSerializer):
     performance = PerformanceDetailSerializer(read_only=True, many=False)
