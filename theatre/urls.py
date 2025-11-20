@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from theatre_app.views import TheatreHallViewSet
+from theatre_app.views import TheatreHallViewSet, ActorViewSet
 
 default_router = routers.DefaultRouter()
 default_router.register("theatre-halls", TheatreHallViewSet)
+default_router.register("actors", ActorViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
 ] + default_router.urls

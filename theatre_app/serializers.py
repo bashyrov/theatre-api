@@ -8,3 +8,10 @@ class TheatreHallSerializer(serializers.ModelSerializer):
     class Meta:
         model = TheatreHall
         fields = "id", "name", "rows", "seats_per_row", "count_seats"
+
+class ActorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Actor
+        fields = "id", "first_name", "last_name"
+
