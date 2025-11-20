@@ -34,15 +34,22 @@ class GenreSerializer(serializers.ModelSerializer):
 class PlaySerializer(serializers.ModelSerializer):
     genres = serializers.SlugRelatedField(
         many=True,
-        read_only=True,
         slug_field="name",
+        queryset=Genre.objects.all()
     )
 
     actors = serializers.SlugRelatedField(
         many=True,
-        read_only=True,
         slug_field="full_name",
+        queryset=Actor.objects.all()
     )
+
+    class Meta:
+        model = Play
+        fields = "id", "title", "description", "genres", "actors"
+
+
+class PlayCreateUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Play
@@ -56,6 +63,7 @@ class PerformanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Performance
         fields = "id", "play_title", "theatre_hall_name", "show_time"
+
 
 class PerformanceDetailSerializer(serializers.ModelSerializer):
     play = PlaySerializer(read_only=True, many=False)
