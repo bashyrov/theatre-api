@@ -53,7 +53,7 @@ class Ticket(models.Model):
     row = models.IntegerField()
     seat_number = models.IntegerField()
     performance = models.ForeignKey(Performance, on_delete=models.CASCADE)
-    reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE)
+    reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE, related_name="tickets")
 
     class Meta:
         unique_together = ('performance', 'row', 'seat_number')
