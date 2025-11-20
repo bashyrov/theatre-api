@@ -1,4 +1,8 @@
+import os
+import uuid
+
 from django.db import models
+from django.utils.text import slugify
 from rest_framework.exceptions import ValidationError
 
 
@@ -87,11 +91,21 @@ class Ticket(models.Model):
     def __str__(self):
         return f"Seat {self.seat_number} in row {self.row} for {self.performance}"
 
+
+def create_custom_path(instance, filename):
+   _, extension = os.path.splitext(filename)
+   return os.path.join(
+       "uploads/images/",
+       f"{slugify(instance.title)}-{uuid.uuid4()}{extension}"
+   )
+
+
 class Play(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     actors = models.ManyToManyField(Actor, related_name='plays')
     genres = models.ManyToManyField(Genre, related_name='plays')
+    image = models.ImageField(null=True, upload_to=create_custom_path)
 
     def __str__(self):
         return self.title
