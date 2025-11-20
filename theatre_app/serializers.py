@@ -1,4 +1,7 @@
+from django.db import transaction
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+
 from theatre_app.models import (TheatreHall,
                                 Actor,
                                 Genre,
@@ -74,15 +77,22 @@ class PerformanceDetailSerializer(PerformanceSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Ticket
-        fields = "id", "row", "seat_number", "performance", "reservation"
+        fields = "id", "row", "seat_number", "performance"
+
+    def validate(self, attrs):
+        data = super(TicketSerializer, self).validate(attrs=attrs)
+        Ticket.validate_ticket(
+            attrs["row"],
+            attrs["seat_number"],
+            attrs["performance"].theatre_hall
+        )
+        return data
 
 
-class TicketListSerializer(serializers.ModelSerializer):
+class TicketListSerializer(TicketSerializer):
     performance = PerformanceListSerializer(read_only=True, many=False)
-
     class Meta:
         model = Ticket
         fields = "id", "row", "seat_number", "performance"
@@ -92,19 +102,36 @@ class TicketDetailSerializer(TicketSerializer):
     performance = PerformanceDetailSerializer(read_only=True, many=False)
 
 
-class ReservationSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Reservation
-        fields = "id", "created_at", "user"
-
-
 class ReservationListSerializer(serializers.ModelSerializer):
     tickets = TicketListSerializer(many=True, read_only=True)
 
     class Meta:
         model = Reservation
         fields = ("id", "user", "tickets", "created_at")
+
+
+class ReservationSerializer(serializers.ModelSerializer):
+    tickets = TicketSerializer(many=True, write_only=True, allow_empty=False)
+
+    class Meta:
+        model = Reservation
+        fields = "id", "created_at", "user", "tickets"
+
+    def create(self, validated_data):
+        tickets_data = validated_data.pop('tickets')
+        with transaction.atomic:
+            reservation = Reservation.objects.create(**validated_data)
+            for ticket_data in tickets_data:
+                performance = Performance.objects.get(
+                    id=ticket_data['performance'].id if isinstance(ticket_data['performance'], Performance) else
+                    ticket_data['performance'])
+                Ticket.objects.create(
+                    reservation=reservation,
+                    row=ticket_data['row'],
+                    seat_number=ticket_data['seat_number'],
+                    performance=performance
+                )
+            return reservation
 
 
 class ReservationDetailSerializer(ReservationListSerializer):

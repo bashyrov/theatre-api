@@ -59,24 +59,33 @@ class Ticket(models.Model):
         unique_together = ('performance', 'row', 'seat_number')
 
     def clean(self):
-        self.validate_seat()
+        Ticket.validate_ticket(
+            self.row,
+            self.seat_number,
+            self.performance.theatre_hall,
+        )
 
     def save(self, *args, **kwargs):
         self.full_clean()
         return super().save(*args, **kwargs)
 
-    def validate_seat(self):
-        hall = self.performance.theatre_hall
+    @staticmethod
+    def validate_ticket(row, seat, theatre_hall):
 
-        if self.row < 1 or self.row > hall.rows:
-            raise ValidationError("Row number out of range.")
-
-        if self.seat_number < 1 or self.seat_number > hall.seats_per_row:
-            raise ValidationError("Seat number out of range.")
+        for ticket_value, ticket_name, hall_attr in [
+            (row, "row", "rows"),
+            (seat, "seat_number", "seats_per_row"),
+        ]:
+            max_value = getattr(theatre_hall, hall_attr)
+            if not (1 <= ticket_value <= max_value):
+                raise ValidationError(
+                    {
+                        ticket_name: f"{ticket_name} number must be in range 1-{max_value}"
+                    }
+                )
 
     def __str__(self):
         return f"Seat {self.seat_number} in row {self.row} for {self.performance}"
-
 
 class Play(models.Model):
     title = models.CharField(max_length=200)
