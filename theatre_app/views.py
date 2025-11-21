@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -94,6 +96,21 @@ class PlayViewSet(viewsets.ModelViewSet):
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = Performance.objects.all()
     permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        date = self.request.query_params.get("date")
+        play_id_str = self.request.query_params.get("play")
+
+        queryset = self.queryset
+
+        if date:
+            date = datetime.strptime(date, "%Y-%m-%d").date()
+            queryset = queryset.filter(show_time__date=date)
+
+        if play_id_str:
+            queryset = queryset.filter(play_id=int(play_id_str))
+
+        return queryset
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':
