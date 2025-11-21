@@ -30,20 +30,24 @@ from theatre_app.serializers import (TheatreHallSerializer,
 class TheatreHallViewSet(viewsets.ModelViewSet):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
+    permission_classes = (IsAuthenticated, )
 
 
 class ActorViewSet(viewsets.ModelViewSet):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
+    permission_classes = (IsAuthenticated, )
 
 
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+    permission_classes = (IsAuthenticated, )
 
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
+    permission_classes = (IsAuthenticated, )
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'retrieve':
@@ -63,6 +67,7 @@ class PlayViewSet(viewsets.ModelViewSet):
 
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = Performance.objects.all()
+    permission_classes = (IsAuthenticated, )
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':
