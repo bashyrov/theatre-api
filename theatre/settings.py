@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'theatre_app',
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,10 @@ REST_FRAMEWORK = {
        "rest_framework.throttling.UserRateThrottle"
     ],
     "DEFAULT_THROTTLE_RATES": {
-       "anon": "5/day",
-       "user": "1000/day"
-    }
+       "anon": "100/minutes",
+       "user": "1000/minutes"
+    },
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
