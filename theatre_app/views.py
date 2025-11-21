@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+
 from theatre_app.models import (TheatreHall,
                                 Actor,
                                 Genre,
@@ -51,8 +53,13 @@ class PlayViewSet(viewsets.ModelViewSet):
         else:
             self.serializer_class = PlaySerializer
 
-
         return super().get_serializer(*args, **kwargs)
+
+    def get_permissions(self):
+        if self.action in ('create', 'update', 'partial_update', 'destroy'):
+            return [IsAdminUser()]
+        return super().get_permissions()
+
 
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = Performance.objects.all()
@@ -67,9 +74,16 @@ class PerformanceViewSet(viewsets.ModelViewSet):
 
         return super().get_serializer(*args, **kwargs)
 
+    def get_permissions(self):
+        if self.action in ('create', 'update', 'partial_update', 'destroy'):
+            return [IsAdminUser()]
+        return super().get_permissions()
+
 
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
+    permission_classes = (IsAuthenticated, )
+
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'retrieve':
@@ -84,6 +98,7 @@ class TicketViewSet(viewsets.ModelViewSet):
 
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
+    permission_classes = (IsAuthenticated, )
 
     def get_serializer(self, *args, **kwargs):
         if self.action in 'retrieve':
