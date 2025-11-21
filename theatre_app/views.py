@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema, OpenApiExample, OpenApiParameter
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -53,8 +55,33 @@ class PlayViewSet(viewsets.ModelViewSet):
 
     @staticmethod
     def _params_to_ints(qs):
-        """Converts a list of string IDs to a list of integers"""
         return [int(str_id) for str_id in qs.split(",")]
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='actors',
+                description='Filter by actor id (ex. ?actors=2,5)',
+                type={"type": "list", "items": {"type": "number"}},
+            ),
+            OpenApiParameter(
+                name='genres',
+                description='Filter by genre id (ex. ?genres=2,5)',
+                type={"type": "list", "items": {"type": "number"}},
+            ),
+            OpenApiParameter(
+                name='title',
+                description='Filter by movie title (ex. ?title=fiction)',
+                type=OpenApiTypes.STR
+            ),
+        ],
+        description='Filters plays by genres, actors and title.',
+        auth=None,
+        operation_id=None,
+        operation=None,
+    )
+    def list(self, request):
+        return super().list(request)
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'retrieve':
@@ -111,6 +138,28 @@ class PerformanceViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(play_id=int(play_id_str))
 
         return queryset
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='play',
+                description='Filter by play id (ex. ?play=2)',
+                type=OpenApiTypes.INT
+            ),
+            OpenApiParameter(
+                name='date',
+                description='Filter by datetime (ex. ?date=2022-10-23)',
+                required=False,
+                type=OpenApiTypes.DATE
+            ),
+        ],
+        description='Filters performances by plays and datetime.',
+        auth=None,
+        operation_id=None,
+        operation=None,
+    )
+    def list(self, request):
+        return super().list(request)
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':
