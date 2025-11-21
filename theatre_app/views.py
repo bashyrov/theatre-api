@@ -113,3 +113,9 @@ class ReservationViewSet(viewsets.ModelViewSet):
         else:
             self.serializer_class = ReservationSerializer
         return super().get_serializer(*args, **kwargs)
+
+    def get_queryset(self):
+        return Reservation.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
