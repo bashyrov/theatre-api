@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import extend_schema, OpenApiExample, OpenApiParameter
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -13,6 +13,7 @@ from theatre_app.models import (TheatreHall,
                                 Ticket,
                                 Reservation
                                 )
+from theatre_app.permissions import IsAdminOrIfAuthenticatedReadOnly
 from theatre_app.serializers import (TheatreHallSerializer,
                                      ActorSerializer,
                                      GenreSerializer,
@@ -34,24 +35,24 @@ from theatre_app.serializers import (TheatreHallSerializer,
 class TheatreHallViewSet(viewsets.ModelViewSet):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
 
 
 class ActorViewSet(viewsets.ModelViewSet):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
 
 
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
 
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
 
     @staticmethod
     def _params_to_ints(qs):
@@ -114,15 +115,10 @@ class PlayViewSet(viewsets.ModelViewSet):
 
         return queryset.distinct()
 
-    def get_permissions(self):
-        if self.action in ('create', 'update', 'partial_update', 'destroy'):
-            return [IsAdminUser()]
-        return super().get_permissions()
-
 
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = Performance.objects.all()
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
 
     def get_queryset(self):
         date = self.request.query_params.get("date")
@@ -170,11 +166,6 @@ class PerformanceViewSet(viewsets.ModelViewSet):
             self.serializer_class = PerformanceSerializer
 
         return super().get_serializer(*args, **kwargs)
-
-    def get_permissions(self):
-        if self.action in ('create', 'update', 'partial_update', 'destroy'):
-            return [IsAdminUser()]
-        return super().get_permissions()
 
 
 class TicketViewSet(viewsets.ModelViewSet):
