@@ -4,13 +4,10 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
-from theatre_app.models import Actor, Performance, Play, Genre
-from theatre_app.serializers import *
+from theatre_app.models import Actor, Play, Genre
+from theatre_app.serializers import PlayDetailSerializer, PlayListSerializer
 
-
-PERFORMANCE_URL = reverse("theatre:performance-list")
 PLAY_URL = reverse("theatre:play-list")
-
 
 def sample_actor(**params) -> Actor:
 
@@ -49,10 +46,6 @@ def sample_play(**params) -> Play:
     return play_obj
 
 
-def get_performance_detail_url(performance: Performance):
-    return reverse("theatre:performance-detail", args=[performance.id])
-
-
 def get_play_detail_url(play: Play):
     return reverse("theatre:play-detail", args=[play.id])
 
@@ -64,10 +57,8 @@ class UnauthenticatedPlayApiTests(TestCase):
 
     def test_auth_required(self):
         response_play_list = self.client.get(PLAY_URL)
-        response_performance_list = self.client.get(PERFORMANCE_URL)
 
         self.assertEqual(response_play_list.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertEqual(response_performance_list.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
 class AuthenticatedPlayApiTests(TestCase):
