@@ -228,7 +228,7 @@ class AdminPlayTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
-    def test_delete_play_forbidden(self):
+    def test_delete_play_success(self):
         play_obj = sample_play()
         url = get_play_detail_url(play_obj)
 
