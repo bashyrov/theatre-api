@@ -1,10 +1,12 @@
 import os
 import uuid
 
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 from rest_framework.exceptions import ValidationError
 
+user_model = get_user_model()
 
 class TheatreHall(models.Model):
     name = models.CharField(max_length=100)
@@ -60,7 +62,13 @@ class Ticket(models.Model):
     reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE, related_name="tickets")
 
     class Meta:
-        unique_together = ('performance', 'row', 'seat_number')
+        unique_together = ("performance", "row", "seat_number")
+        error_messages = {
+            "unique_together": {
+                ("performance", "row", "seat_number"):
+                    "Ticket with this Performance, Row and Seat number already exists."
+            }
+        }
 
     def clean(self):
         Ticket.validate_ticket(
@@ -113,7 +121,7 @@ class Play(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.CharField(max_length=100)  #TODO: Change to ForeignKey to User model when created
+    user = models.ForeignKey(user_model, related_name="reservations", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Reservation {self.id} by {self.user} at {self.created_at}"
