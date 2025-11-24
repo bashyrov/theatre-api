@@ -172,7 +172,6 @@ class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     permission_classes = (IsAuthenticated, )
 
-
     def get_serializer(self, *args, **kwargs):
         if self.action == 'retrieve':
             self.serializer_class = TicketDetailSerializer
@@ -182,6 +181,12 @@ class TicketViewSet(viewsets.ModelViewSet):
             self.serializer_class = TicketSerializer
 
         return super().get_serializer(*args, **kwargs)
+
+    def get_permissions(self):
+        if self.action == "create":
+            return [IsAdminUser()]
+
+        return super().get_permissions()
 
 
 class ReservationViewSet(viewsets.ModelViewSet):

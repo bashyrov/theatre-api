@@ -11,6 +11,8 @@ from theatre_app.views import (TheatreHallViewSet,
                                ReservationViewSet
                                )
 
+app_name = "theatre"
+
 default_router = routers.DefaultRouter()
 
 default_router.register("theatre-halls", TheatreHallViewSet)
