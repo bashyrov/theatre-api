@@ -63,12 +63,6 @@ class Ticket(models.Model):
 
     class Meta:
         unique_together = ("performance", "row", "seat_number")
-        error_messages = {
-            "unique_together": {
-                ("performance", "row", "seat_number"):
-                    "Ticket with this Performance, Row and Seat number already exists."
-            }
-        }
 
     def clean(self):
         Ticket.validate_ticket(

@@ -81,12 +81,23 @@ class TicketSerializer(serializers.ModelSerializer):
         fields = "id", "row", "seat_number", "performance"
 
     def validate(self, attrs):
-        data = super(TicketSerializer, self).validate(attrs=attrs)
-        Ticket.validate_ticket(
-            attrs["row"],
-            attrs["seat_number"],
-            attrs["performance"].theatre_hall
-        )
+        data = super().validate(attrs)
+
+        performance = attrs.get("performance")
+        row = attrs.get("row")
+        seat = attrs.get("seat_number")
+
+        Ticket.validate_ticket(row, seat, performance.theatre_hall)
+
+        if Ticket.objects.filter(
+                performance=performance,
+                row=row,
+                seat_number=seat
+        ).exists():
+            raise ValidationError(
+                "Ticket with this Performance, Row and Seat number already exists."
+            )
+
         return data
 
 
