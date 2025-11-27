@@ -57,11 +57,11 @@ class UnauthenticatedPerformanceApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_auth_required(self):
+    def test_auth_not_required(self):
         response_performance_list = self.client.get(PERFORMANCE_URL)
 
         self.assertEqual(
-            response_performance_list.status_code, status.HTTP_401_UNAUTHORIZED
+            response_performance_list.status_code, status.HTTP_200_OK
         )
 
 

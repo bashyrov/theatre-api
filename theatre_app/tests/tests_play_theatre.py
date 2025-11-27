@@ -54,12 +54,12 @@ class UnauthenticatedPlayApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_auth_required(self):
+    def test_auth_not_required(self):
         response_play_list = self.client.get(PLAY_URL)
 
         self.assertEqual(
             response_play_list.status_code,
-            status.HTTP_401_UNAUTHORIZED
+            status.HTTP_200_OK
         )
 
 
