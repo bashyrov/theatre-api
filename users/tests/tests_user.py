@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
+
 class UserTests(TestCase):
 
     def setUp(self):
@@ -17,9 +18,7 @@ class UserTests(TestCase):
 
     def test_patch_user(self):
 
-        payload = {
-            "email": f"test{self.user}"
-        }
+        payload = {"email": f"test{self.user}"}
         response_user = self.client.patch(reverse("users:manage"), payload)
 
         self.assertEqual(response_user.status_code, status.HTTP_200_OK)

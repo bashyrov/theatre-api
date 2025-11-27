@@ -2,18 +2,15 @@ from django.db import transaction
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from theatre_app.models import (TheatreHall,
-                                Actor,
-                                Genre,
-                                Play,
-                                Performance,
-                                Ticket,
-                                Reservation
-                                )
+from theatre_app.models import (Actor, Genre, Performance, Play, Reservation,
+                                TheatreHall, Ticket)
 
 
 class TheatreHallSerializer(serializers.ModelSerializer):
-    count_seats = serializers.IntegerField(source='total_seats', read_only=True)
+    count_seats = serializers.IntegerField(
+        source="total_seats",
+        read_only=True
+    )
 
     class Meta:
         model = TheatreHall
@@ -38,12 +35,18 @@ class PlaySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Play
-        fields = "id", "title", "description", "genres", "actors", "image"
+        fields = ("id", "title", "description",
+                  "genres", "actors", "image")
 
 
 class PlayDetailSerializer(PlaySerializer):
-    genres = serializers.SlugRelatedField(many=True, read_only=True, slug_field="name")
+    genres = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="name"
+    )
     actors = serializers.StringRelatedField(many=True)
+
 
 class PlayListSerializer(PlaySerializer):
     genres = serializers.StringRelatedField(many=True, read_only=True)
@@ -62,12 +65,15 @@ class PerformanceSerializer(serializers.ModelSerializer):
 
 
 class PerformanceListSerializer(serializers.ModelSerializer):
-    play_title = serializers.CharField(source='play.title', read_only=True)
-    theatre_hall_name = serializers.CharField(source='theatre_hall.name', read_only=True)
+    play_title = serializers.CharField(source="play.title", read_only=True)
+    theatre_hall_name = serializers.CharField(
+        source="theatre_hall.name", read_only=True
+    )
 
     class Meta:
         model = Performance
-        fields = "id", "play_title", "theatre_hall_name", "show_time", "available_seats"
+        fields = ("id", "play_title",
+                  "theatre_hall_name", "show_time", "available_seats")
 
 
 class PerformanceDetailSerializer(PerformanceSerializer):
@@ -90,12 +96,11 @@ class TicketSerializer(serializers.ModelSerializer):
         Ticket.validate_ticket(row, seat, performance.theatre_hall)
 
         if Ticket.objects.filter(
-                performance=performance,
-                row=row,
-                seat_number=seat
+            performance=performance, row=row, seat_number=seat
         ).exists():
             raise ValidationError(
-                "Ticket with this Performance, Row and Seat number already exists."
+                "Ticket with this Performance, "
+                "Row and Seat number already exists."
             )
 
         return data
@@ -103,6 +108,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
 class TicketListSerializer(TicketSerializer):
     performance = PerformanceListSerializer(read_only=True, many=False)
+
     class Meta:
         model = Ticket
         fields = "id", "row", "seat_number", "performance"
@@ -128,18 +134,22 @@ class ReservationSerializer(serializers.ModelSerializer):
         fields = "id", "created_at", "tickets"
 
     def create(self, validated_data):
-        tickets_data = validated_data.pop('tickets')
+        tickets_data = validated_data.pop("tickets")
         with transaction.atomic():
             reservation = Reservation.objects.create(**validated_data)
             for ticket_data in tickets_data:
                 performance = Performance.objects.get(
-                    id=ticket_data['performance'].id if isinstance(ticket_data['performance'], Performance) else
-                    ticket_data['performance'])
+                    id=(
+                        ticket_data["performance"].id
+                        if isinstance(ticket_data["performance"], Performance)
+                        else ticket_data["performance"]
+                    )
+                )
                 Ticket.objects.create(
                     reservation=reservation,
-                    row=ticket_data['row'],
-                    seat_number=ticket_data['seat_number'],
-                    performance=performance
+                    row=ticket_data["row"],
+                    seat_number=ticket_data["seat_number"],
+                    performance=performance,
                 )
             return reservation
 

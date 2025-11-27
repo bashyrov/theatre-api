@@ -4,9 +4,10 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
-from theatre_app.models import Ticket, Reservation
+from theatre_app.models import Reservation, Ticket
+from theatre_app.serializers import (TicketDetailSerializer,
+                                     TicketListSerializer, TicketSerializer)
 from theatre_app.tests.tests_performance_theatre import sample_performance
-from theatre_app.serializers import TicketListSerializer, TicketDetailSerializer, TicketSerializer
 
 TICKET_URL = reverse("theatre:ticket-list")
 
@@ -26,7 +27,7 @@ def sample_ticket(**params) -> Ticket:
     ticket_default = {
         "row": f"{performance_obj.theatre_hall.rows - 1}",
         "seat_number": f"{performance_obj.theatre_hall.seats_per_row - 1}",
-        "performance": performance_obj
+        "performance": performance_obj,
     }
 
     ticket_default.update(params)
@@ -47,7 +48,10 @@ class UnauthenticatedTicketApiTests(TestCase):
     def test_auth_required(self):
         response_ticket_list = self.client.get(TICKET_URL)
 
-        self.assertEqual(response_ticket_list.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(
+            response_ticket_list.status_code,
+            status.HTTP_401_UNAUTHORIZED
+        )
 
 
 class AuthenticatedTicketApiTests(TestCase):
@@ -73,12 +77,13 @@ class AuthenticatedTicketApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
 
-
     def test_retrieve_ticket_detail(self):
         reservation_obj = sample_reservation(user=self.user)
         performance_obj = sample_performance()
 
-        ticket_obj = sample_ticket(reservation=reservation_obj, performance=performance_obj)
+        ticket_obj = sample_ticket(
+            reservation=reservation_obj, performance=performance_obj
+        )
 
         serialized_ticket = TicketDetailSerializer(ticket_obj)
 
@@ -98,16 +103,21 @@ class AuthenticatedTicketApiTests(TestCase):
             "row": theatre_hall_obj.rows - 1,
             "seat_number": theatre_hall_obj.seats_per_row - 1,
             "performance": performance_obj.id,
-            "reservation": reservation_obj.id
+            "reservation": reservation_obj.id,
         }
         response = self.client.post(TICKET_URL, payload)
-        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_405_METHOD_NOT_ALLOWED
+        )
 
     def test_patch_ticket_success(self):
 
         reservation_obj = sample_reservation(user=self.user)
         performance_obj = sample_performance()
-        ticket_obj = sample_ticket(reservation=reservation_obj, performance=performance_obj)
+        ticket_obj = sample_ticket(
+            reservation=reservation_obj, performance=performance_obj
+        )
         theatre_hall_obj = performance_obj.theatre_hall
 
         second_performance_obj = sample_performance()
@@ -115,7 +125,7 @@ class AuthenticatedTicketApiTests(TestCase):
             "row": theatre_hall_obj.rows - 1,
             "seat_number": theatre_hall_obj.seats_per_row - 1,
             "performance": second_performance_obj.id,
-            "reservation": reservation_obj.id
+            "reservation": reservation_obj.id,
         }
 
         url = get_ticket_detail_url(ticket_obj)
@@ -127,7 +137,9 @@ class AuthenticatedTicketApiTests(TestCase):
         reservation_obj = sample_reservation(user=self.user)
         performance_obj = sample_performance()
 
-        ticket_obj = sample_ticket(reservation=reservation_obj, performance=performance_obj)
+        ticket_obj = sample_ticket(
+            reservation=reservation_obj, performance=performance_obj
+        )
         url = get_ticket_detail_url(ticket_obj)
 
         response = self.client.delete(url)
@@ -141,15 +153,12 @@ class AuthenticatedTicketApiTests(TestCase):
             "reservation": reservation_obj,
             "performance": performance_obj.id,
             "row": 43,
-            "seat_number": 1
+            "seat_number": 1,
         }
 
         serializer = TicketSerializer(data=data)
         self.assertFalse(serializer.is_valid())
-        self.assertIn(
-            "row number must be in range",
-            str(serializer.errors)
-        )
+        self.assertIn("row number must be in range", str(serializer.errors))
 
 
 class AdminPlayTests(TestCase):
@@ -161,4 +170,3 @@ class AdminPlayTests(TestCase):
             is_staff=True,
         )
         self.client.force_authenticate(self.user)
-

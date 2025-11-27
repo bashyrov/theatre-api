@@ -7,7 +7,8 @@ from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
 from theatre_app.models import Performance, TheatreHall
-from theatre_app.serializers import PerformanceDetailSerializer, PerformanceListSerializer
+from theatre_app.serializers import (PerformanceDetailSerializer,
+                                     PerformanceListSerializer)
 from theatre_app.tests.tests_play_theatre import sample_play
 
 PERFORMANCE_URL = reverse("theatre:performance-list")
@@ -26,6 +27,7 @@ def sample_theatre_hall(**params) -> TheatreHall:
 
     return theatre_hall_obj
 
+
 def sample_performance(**params) -> Performance:
 
     play_obj = sample_play()
@@ -35,13 +37,8 @@ def sample_performance(**params) -> Performance:
         "play": play_obj,
         "theatre_hall": theatre_hall_obj,
         "show_time": datetime(
-            year=2025,
-            month=12,
-            day=31,
-            hour=0,
-            minute=0,
-            tzinfo=timezone.utc
-        )
+            year=2025, month=12, day=31, hour=0, minute=0, tzinfo=timezone.utc
+        ),
     }
 
     performance_defaults.update(params)
@@ -63,7 +60,9 @@ class UnauthenticatedPerformanceApiTests(TestCase):
     def test_auth_required(self):
         response_performance_list = self.client.get(PERFORMANCE_URL)
 
-        self.assertEqual(response_performance_list.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(
+            response_performance_list.status_code, status.HTTP_401_UNAUTHORIZED
+        )
 
 
 class AuthenticatedPerformanceApiTests(TestCase):
@@ -81,10 +80,16 @@ class AuthenticatedPerformanceApiTests(TestCase):
 
         response = self.client.get(PERFORMANCE_URL)
         performances_qrs = Performance.objects.all()
-        serialized_performances = PerformanceListSerializer(performances_qrs, many=True)
+        serialized_performances = PerformanceListSerializer(
+            performances_qrs,
+            many=True
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["results"], serialized_performances.data)
+        self.assertEqual(
+            response.data["results"],
+            serialized_performances.data
+        )
 
     def test_filtered_performances_by_show_time(self):
         performance_obj = sample_performance()
@@ -92,15 +97,22 @@ class AuthenticatedPerformanceApiTests(TestCase):
 
         response = self.client.get(
             PERFORMANCE_URL,
-            {"date": f"{show_time.year}-{show_time.month}-{show_time.day}",
-             }
+            {
+                "date": f"{show_time.year}-{show_time.month}-{show_time.day}",
+            },
         )
 
         performances_qrs = Performance.objects.filter(show_time=show_time)
-        serialized_performances = PerformanceListSerializer(performances_qrs, many=True)
+        serialized_performances = PerformanceListSerializer(
+            performances_qrs,
+            many=True
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["results"], serialized_performances.data)
+        self.assertEqual(
+            response.data["results"],
+            serialized_performances.data
+        )
 
     def test_filtered_performances_by_actors(self):
         performance_obj = sample_performance()
@@ -108,16 +120,22 @@ class AuthenticatedPerformanceApiTests(TestCase):
 
         response = self.client.get(
             PERFORMANCE_URL,
-            {"play": f"{play_obj.id}",
-             }
+            {
+                "play": f"{play_obj.id}",
+            },
         )
 
         performances_qrs = Performance.objects.filter(play__id=play_obj.id)
-        serialized_performances = PerformanceListSerializer(performances_qrs, many=True)
+        serialized_performances = PerformanceListSerializer(
+            performances_qrs,
+            many=True
+        )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["results"], serialized_performances.data)
-
+        self.assertEqual(
+            response.data["results"],
+            serialized_performances.data
+        )
 
     def test_retrieve_performance_detail(self):
         performance_obj = sample_performance()
@@ -182,7 +200,7 @@ class AdminPerformanceTests(TestCase):
                 hour=0,
                 minute=0,
                 tzinfo=timezone.utc
-            )
+            ),
         }
         response = self.client.post(PERFORMANCE_URL, payload)
 
@@ -191,7 +209,12 @@ class AdminPerformanceTests(TestCase):
 
         for key in payload:
             if key in ("play", "theatre_hall"):
-                self.assertEqual(payload[key], [(getattr(performance_obj, key)).id])
+                self.assertEqual(
+                    payload[key],
+                    [
+                        (getattr(performance_obj, key)).id
+                    ]
+                )
             else:
                 self.assertEqual(payload[key], getattr(performance_obj, key))
 

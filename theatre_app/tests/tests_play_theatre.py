@@ -4,10 +4,11 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
-from theatre_app.models import Actor, Play, Genre
+from theatre_app.models import Actor, Genre, Play
 from theatre_app.serializers import PlayDetailSerializer, PlayListSerializer
 
 PLAY_URL = reverse("theatre:play-list")
+
 
 def sample_actor(**params) -> Actor:
 
@@ -24,9 +25,7 @@ def sample_actor(**params) -> Actor:
 
 def sample_genre(**params) -> Genre:
 
-    genres_defaults = {
-        "name": "Example Genre"
-    }
+    genres_defaults = {"name": "Example Genre"}
 
     genres_defaults.update(params)
     genre_obj = Genre.objects.create(**genres_defaults)
@@ -58,7 +57,10 @@ class UnauthenticatedPlayApiTests(TestCase):
     def test_auth_required(self):
         response_play_list = self.client.get(PLAY_URL)
 
-        self.assertEqual(response_play_list.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(
+            response_play_list.status_code,
+            status.HTTP_401_UNAUTHORIZED
+        )
 
 
 class AuthenticatedPlayApiTests(TestCase):
@@ -81,7 +83,6 @@ class AuthenticatedPlayApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
 
-
     def test_filtered_plays_by_genres(self):
         play_obj = sample_play()
         genre_obj = sample_genre()
@@ -90,8 +91,9 @@ class AuthenticatedPlayApiTests(TestCase):
 
         response = self.client.get(
             PLAY_URL,
-            {"genre": f"{genre_obj.id}",
-            }
+            {
+                "genre": f"{genre_obj.id}",
+            },
         )
 
         play_qrst = Play.objects.filter(genres=genre_obj)
@@ -99,7 +101,6 @@ class AuthenticatedPlayApiTests(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
-
 
     def test_filtered_plays_by_actors(self):
         play_obj = sample_play()
@@ -109,8 +110,9 @@ class AuthenticatedPlayApiTests(TestCase):
 
         response = self.client.get(
             PLAY_URL,
-            {"actor": f"{actor_obj.id}",
-            }
+            {
+                "actor": f"{actor_obj.id}",
+            },
         )
 
         play_qrst = Play.objects.filter(actors=actor_obj)
@@ -118,15 +120,15 @@ class AuthenticatedPlayApiTests(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
-        
+
     def test_filtered_plays_by_title(self):
         play_obj = sample_play()
 
-
         response = self.client.get(
             PLAY_URL,
-            {"title": f"{play_obj.title[:2]}",
-            }
+            {
+                "title": f"{play_obj.title[:2]}",
+            },
         )
 
         play_qrst = Play.objects.filter(title__icontains=play_obj.title[:2])
@@ -134,7 +136,6 @@ class AuthenticatedPlayApiTests(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
-
 
     def test_retrieve_play_detail(self):
         play_obj = sample_play()
@@ -173,7 +174,6 @@ class AuthenticatedPlayApiTests(TestCase):
         response = self.client.patch(url, payload)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-
     def test_delete_play_forbidden(self):
 
         play_obj = sample_play()
@@ -210,7 +210,11 @@ class AdminPlayTests(TestCase):
 
         for key in payload:
             if key in ("actors", "genres"):
-                related_ids = list(getattr(play_obj, key).values_list('id', flat=True))
+                related_ids = list(
+                    getattr(
+                        play_obj,
+                        key
+                    ).values_list("id", flat=True))
                 self.assertEqual(payload[key], related_ids[0])
             else:
                 self.assertEqual(payload[key], getattr(play_obj, key))
@@ -226,7 +230,6 @@ class AdminPlayTests(TestCase):
 
         response = self.client.patch(url, payload)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
 
     def test_delete_play_success(self):
         play_obj = sample_play()

@@ -1,59 +1,55 @@
 from datetime import datetime
 
 from drf_spectacular.types import OpenApiTypes
-from drf_spectacular.utils import extend_schema, OpenApiParameter
-from rest_framework import viewsets, mixins
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from drf_spectacular.utils import OpenApiParameter, extend_schema
+from rest_framework import mixins, viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
 
-from theatre_app.models import (TheatreHall,
-                                Actor,
+from theatre_app.models import (Actor,
                                 Genre,
-                                Play,
                                 Performance,
-                                Ticket,
-                                Reservation
-                                )
+                                Play,
+                                Reservation,
+                                TheatreHall,
+                                Ticket)
 from theatre_app.permissions import IsAdminOrIfAuthenticatedReadOnly
-from theatre_app.serializers import (TheatreHallSerializer,
-                                     ActorSerializer,
-                                     GenreSerializer,
-                                     PlaySerializer,
-                                     PerformanceSerializer,
-                                     TicketSerializer,
-                                     TicketListSerializer,
-                                     TicketDetailSerializer,
-                                     ReservationSerializer,
+from theatre_app.serializers import (ActorSerializer, GenreSerializer,
                                      PerformanceDetailSerializer,
-                                     PlayDetailSerializer,
-                                     PlayListSerializer,
                                      PerformanceListSerializer,
+                                     PerformanceSerializer,
+                                     PlayDetailSerializer, PlayListSerializer,
+                                     PlaySerializer,
+                                     ReservationDetailSerializer,
                                      ReservationListSerializer,
-                                     ReservationDetailSerializer
-                                     )
+                                     ReservationSerializer,
+                                     TheatreHallSerializer,
+                                     TicketDetailSerializer,
+                                     TicketListSerializer,
+                                     TicketSerializer)
 
 
 class TheatreHallViewSet(viewsets.ModelViewSet):
     queryset = TheatreHall.objects.all()
     serializer_class = TheatreHallSerializer
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
 class ActorViewSet(viewsets.ModelViewSet):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
 
 class PlayViewSet(viewsets.ModelViewSet):
     queryset = Play.objects.all()
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @staticmethod
     def _params_to_ints(qs):
@@ -62,22 +58,22 @@ class PlayViewSet(viewsets.ModelViewSet):
     @extend_schema(
         parameters=[
             OpenApiParameter(
-                name='actors',
-                description='Filter by actor id (ex. ?actors=2,5)',
+                name="actors",
+                description="Filter by actor id (ex. ?actors=2,5)",
                 type={"type": "list", "items": {"type": "number"}},
             ),
             OpenApiParameter(
-                name='genres',
-                description='Filter by genre id (ex. ?genres=2,5)',
+                name="genres",
+                description="Filter by genre id (ex. ?genres=2,5)",
                 type={"type": "list", "items": {"type": "number"}},
             ),
             OpenApiParameter(
-                name='title',
-                description='Filter by movie title (ex. ?title=fiction)',
-                type=OpenApiTypes.STR
+                name="title",
+                description="Filter by movie title (ex. ?title=fiction)",
+                type=OpenApiTypes.STR,
             ),
         ],
-        description='Filters plays by genres, actors and title.',
+        description="Filters plays by genres, actors and title.",
         auth=None,
         operation_id=None,
         operation=None,
@@ -86,9 +82,9 @@ class PlayViewSet(viewsets.ModelViewSet):
         return super().list(request)
 
     def get_serializer(self, *args, **kwargs):
-        if self.action == 'retrieve':
+        if self.action == "retrieve":
             self.serializer_class = PlayDetailSerializer
-        elif self.action == 'list':
+        elif self.action == "list":
             self.serializer_class = PlayListSerializer
         else:
             self.serializer_class = PlaySerializer
@@ -96,7 +92,7 @@ class PlayViewSet(viewsets.ModelViewSet):
         return super().get_serializer(*args, **kwargs)
 
     def get_queryset(self):
-        """Retrieve the movies with filters"""
+        """Retrieve the play with filters"""
         title = self.request.query_params.get("title")
         genres = self.request.query_params.get("genres")
         actors = self.request.query_params.get("actors")
@@ -119,7 +115,7 @@ class PlayViewSet(viewsets.ModelViewSet):
 
 class PerformanceViewSet(viewsets.ModelViewSet):
     queryset = Performance.objects.all()
-    permission_classes = (IsAdminOrIfAuthenticatedReadOnly, )
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
         date = self.request.query_params.get("date")
@@ -139,18 +135,18 @@ class PerformanceViewSet(viewsets.ModelViewSet):
     @extend_schema(
         parameters=[
             OpenApiParameter(
-                name='play',
-                description='Filter by play id (ex. ?play=2)',
-                type=OpenApiTypes.INT
+                name="play",
+                description="Filter by play id (ex. ?play=2)",
+                type=OpenApiTypes.INT,
             ),
             OpenApiParameter(
-                name='date',
-                description='Filter by datetime (ex. ?date=2022-10-23)',
+                name="date",
+                description="Filter by datetime (ex. ?date=2022-10-23)",
                 required=False,
-                type=OpenApiTypes.DATE
+                type=OpenApiTypes.DATE,
             ),
         ],
-        description='Filters performances by plays and datetime.',
+        description="Filters performances by plays and datetime.",
         auth=None,
         operation_id=None,
         operation=None,
@@ -159,9 +155,9 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return super().list(request)
 
     def get_serializer(self, *args, **kwargs):
-        if self.action == 'list':
+        if self.action == "list":
             self.serializer_class = PerformanceListSerializer
-        elif self.action == 'retrieve':
+        elif self.action == "retrieve":
             self.serializer_class = PerformanceDetailSerializer
         else:
             self.serializer_class = PerformanceSerializer
@@ -169,18 +165,20 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return super().get_serializer(*args, **kwargs)
 
 
-class TicketViewSet(mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin,
-                   mixins.ListModelMixin,
-                   GenericViewSet):
+class TicketViewSet(
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.ListModelMixin,
+    GenericViewSet,
+):
     queryset = Ticket.objects.all()
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     def get_serializer(self, *args, **kwargs):
-        if self.action == 'retrieve':
+        if self.action == "retrieve":
             self.serializer_class = TicketDetailSerializer
-        elif self.action == 'list':
+        elif self.action == "list":
             self.serializer_class = TicketListSerializer
         else:
             self.serializer_class = TicketSerializer
@@ -188,15 +186,14 @@ class TicketViewSet(mixins.RetrieveModelMixin,
         return super().get_serializer(*args, **kwargs)
 
 
-
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     def get_serializer(self, *args, **kwargs):
-        if self.action in 'retrieve':
+        if self.action in "retrieve":
             self.serializer_class = ReservationDetailSerializer
-        elif self.action == 'list':
+        elif self.action == "list":
             self.serializer_class = ReservationListSerializer
         else:
             self.serializer_class = ReservationSerializer

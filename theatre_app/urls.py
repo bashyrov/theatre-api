@@ -1,15 +1,11 @@
 from django.urls import path
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
+                                   SpectacularSwaggerView)
 from rest_framework import routers
 
-from theatre_app.views import (TheatreHallViewSet,
-                               ActorViewSet,
-                               GenreViewSet,
-                               PlayViewSet,
-                               PerformanceViewSet,
-                               TicketViewSet,
-                               ReservationViewSet
-                               )
+from theatre_app.views import (ActorViewSet, GenreViewSet, PerformanceViewSet,
+                               PlayViewSet, ReservationViewSet,
+                               TheatreHallViewSet, TicketViewSet)
 
 app_name = "theatre"
 
@@ -24,7 +20,15 @@ default_router.register("tickets", TicketViewSet)
 default_router.register("reservations", ReservationViewSet)
 
 urlpatterns = [
-    path('schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "schema/swagger-ui/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "schema/redoc/", SpectacularRedocView.as_view(
+            url_name="schema"
+        ), name="redoc"
+    ),
 ] + default_router.urls

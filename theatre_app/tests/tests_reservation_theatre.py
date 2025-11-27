@@ -5,9 +5,11 @@ from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
 from theatre_app.models import Reservation
-from theatre_app.tests.tests_performance_theatre import sample_play, sample_performance
-from theatre_app.serializers import ReservationSerializer, ReservationDetailSerializer, ReservationListSerializer
-from theatre_app.tests.tests_tickets_theatre import sample_ticket, sample_reservation
+from theatre_app.serializers import (ReservationDetailSerializer,
+                                     ReservationListSerializer)
+from theatre_app.tests.tests_performance_theatre import sample_performance
+from theatre_app.tests.tests_tickets_theatre import (sample_reservation,
+                                                     sample_ticket)
 
 RESERVATION_URL = reverse("theatre:reservation-list")
 
@@ -24,7 +26,9 @@ class UnauthenticatedReservationApiTests(TestCase):
     def test_auth_required(self):
         response_reservation_list = self.client.get(RESERVATION_URL)
 
-        self.assertEqual(response_reservation_list.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(
+            response_reservation_list.status_code, status.HTTP_401_UNAUTHORIZED
+        )
 
 
 class AuthenticatedTicketApiTests(TestCase):
@@ -50,7 +54,6 @@ class AuthenticatedTicketApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
 
-
     def test_retrieve_reservation_detail(self):
         reservation_obj = sample_reservation(user=self.user)
 
@@ -66,18 +69,17 @@ class AuthenticatedTicketApiTests(TestCase):
         performance_obj = sample_performance()
 
         payload = {
-                "tickets": [
-                    {
-                        "row": performance_obj.theatre_hall.rows - 1,
-                        "seat_number": performance_obj.theatre_hall.seats_per_row - 1,
-                        "performance": performance_obj.id
-                    }
-                ]
+            "tickets": [
+                {
+                    "row": 2,
+                    "seat_number": 2,
+                    "performance": performance_obj.id,
+                }
+            ]
         }
 
-        response = self.client.post(RESERVATION_URL, payload, format='json')
+        response = self.client.post(RESERVATION_URL, payload, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
 
     def test_delete_reservation_success(self):
         reservation_obj = sample_reservation(user=self.user)

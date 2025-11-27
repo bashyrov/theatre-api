@@ -8,6 +8,7 @@ from rest_framework.exceptions import ValidationError
 
 user_model = get_user_model()
 
+
 class TheatreHall(models.Model):
     name = models.CharField(max_length=100)
     rows = models.IntegerField()
@@ -41,7 +42,7 @@ class Actor(models.Model):
 
 
 class Performance(models.Model):
-    play = models.ForeignKey('Play', on_delete=models.CASCADE)
+    play = models.ForeignKey("Play", on_delete=models.CASCADE)
     theatre_hall = models.ForeignKey(TheatreHall, on_delete=models.CASCADE)
     show_time = models.DateTimeField()
 
@@ -59,7 +60,9 @@ class Ticket(models.Model):
     row = models.IntegerField()
     seat_number = models.IntegerField()
     performance = models.ForeignKey(Performance, on_delete=models.CASCADE)
-    reservation = models.ForeignKey('Reservation', on_delete=models.CASCADE, related_name="tickets")
+    reservation = models.ForeignKey(
+        "Reservation", on_delete=models.CASCADE, related_name="tickets"
+    )
 
     class Meta:
         unique_together = ("performance", "row", "seat_number")
@@ -86,27 +89,29 @@ class Ticket(models.Model):
             if not (1 <= ticket_value <= max_value):
                 raise ValidationError(
                     {
-                        ticket_name: f"{ticket_name} number must be in range 1-{max_value}"
+                        ticket_name: f"{ticket_name} "
+                                     f"number must be in range 1-{max_value}"
                     }
                 )
 
     def __str__(self):
-        return f"Seat {self.seat_number} in row {self.row} for {self.performance}"
+        return (f"Seat {self.seat_number} "
+                f"in row {self.row} for {self.performance}")
 
 
 def create_custom_path(instance, filename):
-   _, extension = os.path.splitext(filename)
-   return os.path.join(
-       "uploads/images/",
-       f"{slugify(instance.title)}-{uuid.uuid4()}{extension}"
-   )
+    _, extension = os.path.splitext(filename)
+    return os.path.join(
+        "uploads/images/",
+        f"{slugify(instance.title)}-{uuid.uuid4()}{extension}"
+    )
 
 
 class Play(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    actors = models.ManyToManyField(Actor, related_name='plays')
-    genres = models.ManyToManyField(Genre, related_name='plays')
+    actors = models.ManyToManyField(Actor, related_name="plays")
+    genres = models.ManyToManyField(Genre, related_name="plays")
     image = models.ImageField(null=True, upload_to=create_custom_path)
 
     def __str__(self):
@@ -115,7 +120,9 @@ class Play(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(user_model, related_name="reservations", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        user_model, related_name="reservations", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f"Reservation {self.id} by {self.user} at {self.created_at}"
