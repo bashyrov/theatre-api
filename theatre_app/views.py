@@ -2,8 +2,9 @@ from datetime import datetime
 
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema, OpenApiParameter
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.viewsets import GenericViewSet
 
 from theatre_app.models import (TheatreHall,
                                 Actor,
@@ -168,7 +169,11 @@ class PerformanceViewSet(viewsets.ModelViewSet):
         return super().get_serializer(*args, **kwargs)
 
 
-class TicketViewSet(viewsets.ModelViewSet):
+class TicketViewSet(mixins.RetrieveModelMixin,
+                   mixins.UpdateModelMixin,
+                   mixins.DestroyModelMixin,
+                   mixins.ListModelMixin,
+                   GenericViewSet):
     queryset = Ticket.objects.all()
     permission_classes = (IsAuthenticated, )
 
@@ -182,11 +187,6 @@ class TicketViewSet(viewsets.ModelViewSet):
 
         return super().get_serializer(*args, **kwargs)
 
-    def get_permissions(self):
-        if self.action == "create":
-            return [IsAdminUser()]
-
-        return super().get_permissions()
 
 
 class ReservationViewSet(viewsets.ModelViewSet):
