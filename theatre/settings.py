@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-2)n8330z2x(+5r(y-04t8#57)6y8%o-$5xa=jiee8cen_xnz&k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", True))
 
 ALLOWED_HOSTS = []
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 AUTH_USER_MODEL = "users.User"
 
@@ -81,8 +85,12 @@ WSGI_APPLICATION = "theatre.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST", "db"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
 
