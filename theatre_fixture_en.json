@@ -1,5 +1,115 @@
 [
   {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "user1@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "email": "user2@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "email": "user3@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "email": "user4@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "email": "user5@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "email": "user6@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "email": "user7@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "email": "user8@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "email": "user9@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "email": "user10@example.com",
+      "password": "pbkdf2_sha256$260000$abc123$hashvalue",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
     "model": "theatre_app.theatrehall",
     "pk": 1,
     "fields": {
@@ -649,7 +759,7 @@
     "pk": 1,
     "fields": {
       "created_at": "2025-11-20T03:15:35.241971",
-      "user": "user1"
+      "user": "1"
     }
   },
   {
@@ -657,7 +767,7 @@
     "pk": 2,
     "fields": {
       "created_at": "2025-11-19T03:15:35.241971",
-      "user": "user2"
+      "user": "7"
     }
   },
   {
@@ -665,7 +775,7 @@
     "pk": 3,
     "fields": {
       "created_at": "2025-11-18T03:15:35.241971",
-      "user": "user3"
+      "user": "6"
     }
   },
   {
@@ -673,7 +783,7 @@
     "pk": 4,
     "fields": {
       "created_at": "2025-11-17T03:15:35.241971",
-      "user": "user4"
+      "user": "7"
     }
   },
   {
@@ -681,7 +791,7 @@
     "pk": 5,
     "fields": {
       "created_at": "2025-11-16T03:15:35.241971",
-      "user": "user5"
+      "user": "8"
     }
   },
   {
@@ -689,7 +799,7 @@
     "pk": 6,
     "fields": {
       "created_at": "2025-11-15T03:15:35.241971",
-      "user": "user6"
+      "user": "8"
     }
   },
   {
@@ -697,7 +807,7 @@
     "pk": 7,
     "fields": {
       "created_at": "2025-11-14T03:15:35.241971",
-      "user": "user7"
+      "user": "7"
     }
   },
   {
@@ -705,7 +815,7 @@
     "pk": 8,
     "fields": {
       "created_at": "2025-11-13T03:15:35.241971",
-      "user": "user8"
+      "user": "5"
     }
   },
   {
@@ -713,7 +823,7 @@
     "pk": 9,
     "fields": {
       "created_at": "2025-11-12T03:15:35.241971",
-      "user": "user9"
+      "user": "3"
     }
   },
   {
@@ -721,7 +831,7 @@
     "pk": 10,
     "fields": {
       "created_at": "2025-11-11T03:15:35.241971",
-      "user": "user10"
+      "user": "4"
     }
   },
   {
@@ -729,7 +839,7 @@
     "pk": 11,
     "fields": {
       "created_at": "2025-11-10T03:15:35.241971",
-      "user": "user11"
+      "user": "1"
     }
   },
   {
@@ -737,7 +847,7 @@
     "pk": 12,
     "fields": {
       "created_at": "2025-11-09T03:15:35.241971",
-      "user": "user12"
+      "user": "4"
     }
   },
   {
@@ -745,7 +855,7 @@
     "pk": 13,
     "fields": {
       "created_at": "2025-11-08T03:15:35.241971",
-      "user": "user13"
+      "user": "6"
     }
   },
   {
@@ -753,7 +863,7 @@
     "pk": 14,
     "fields": {
       "created_at": "2025-11-07T03:15:35.241971",
-      "user": "user14"
+      "user": "5"
     }
   },
   {
@@ -761,7 +871,7 @@
     "pk": 15,
     "fields": {
       "created_at": "2025-11-06T03:15:35.241971",
-      "user": "user15"
+      "user": "9"
     }
   },
   {
@@ -769,7 +879,7 @@
     "pk": 16,
     "fields": {
       "created_at": "2025-11-05T03:15:35.241971",
-      "user": "user16"
+      "user": "8"
     }
   },
   {
@@ -777,7 +887,7 @@
     "pk": 17,
     "fields": {
       "created_at": "2025-11-04T03:15:35.241971",
-      "user": "user17"
+      "user": "7"
     }
   },
   {
@@ -785,7 +895,7 @@
     "pk": 18,
     "fields": {
       "created_at": "2025-11-03T03:15:35.241971",
-      "user": "user18"
+      "user": "6"
     }
   },
   {
@@ -793,7 +903,7 @@
     "pk": 19,
     "fields": {
       "created_at": "2025-11-02T03:15:35.241971",
-      "user": "user19"
+      "user": "3"
     }
   },
   {
@@ -801,7 +911,7 @@
     "pk": 20,
     "fields": {
       "created_at": "2025-11-01T03:15:35.241971",
-      "user": "user20"
+      "user": "4"
     }
   },
   {
@@ -809,7 +919,7 @@
     "pk": 21,
     "fields": {
       "created_at": "2025-10-31T03:15:35.241971",
-      "user": "user21"
+      "user": "2"
     }
   },
   {
@@ -817,7 +927,7 @@
     "pk": 22,
     "fields": {
       "created_at": "2025-10-30T03:15:35.241971",
-      "user": "user22"
+      "user": "2"
     }
   },
   {
@@ -825,7 +935,7 @@
     "pk": 23,
     "fields": {
       "created_at": "2025-10-29T03:15:35.241971",
-      "user": "user23"
+      "user": "2"
     }
   },
   {
@@ -833,7 +943,7 @@
     "pk": 24,
     "fields": {
       "created_at": "2025-10-28T03:15:35.241971",
-      "user": "user24"
+      "user": "2"
     }
   },
   {
@@ -841,7 +951,7 @@
     "pk": 25,
     "fields": {
       "created_at": "2025-10-27T03:15:35.241971",
-      "user": "user25"
+      "user": "2"
     }
   },
   {
@@ -849,7 +959,7 @@
     "pk": 26,
     "fields": {
       "created_at": "2025-10-26T03:15:35.241971",
-      "user": "user26"
+      "user": "2"
     }
   },
   {
@@ -857,7 +967,7 @@
     "pk": 27,
     "fields": {
       "created_at": "2025-10-25T03:15:35.241971",
-      "user": "user27"
+      "user": "2"
     }
   },
   {
@@ -865,7 +975,7 @@
     "pk": 28,
     "fields": {
       "created_at": "2025-10-24T03:15:35.241971",
-      "user": "user28"
+      "user": "2"
     }
   },
   {
@@ -873,7 +983,7 @@
     "pk": 29,
     "fields": {
       "created_at": "2025-10-23T03:15:35.241971",
-      "user": "user29"
+      "user": "2"
     }
   },
   {
@@ -881,7 +991,7 @@
     "pk": 30,
     "fields": {
       "created_at": "2025-10-22T03:15:35.241971",
-      "user": "user30"
+      "user": "3"
     }
   },
   {
