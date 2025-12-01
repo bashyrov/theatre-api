@@ -7,6 +7,8 @@ Modern REST API built with **Django REST Framework**, featuring JWT authenticati
 [![DRF](https://img.shields.io/badge/DRF-3.14%2B-blue.svg)](https://www.django-rest-framework.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/)
 [![JWT](https://img.shields.io/badge/JWT-Authentication-black)](https://jwt.io/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![DRF Spectacular](https://img.shields.io/badge/DRF_Spectacular-0.27-6C4AB6?logo=swagger&logoColor=white&style=for-the-badge)](https://drf-spectacular.readthedocs.io/)
 
 ## Features
 
@@ -129,5 +131,6 @@ Interactive documentation available after server start:
 Swagger UI: http://127.0.0.1:8001/api/schema/swagger-ui/
 
 ReDoc: http://127.0.0.1:8001/api/schema/redoc/
+
 
 OpenAPI Schema: http://127.0.0.1:8001/api/schema/
