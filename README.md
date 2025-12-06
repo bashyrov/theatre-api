@@ -3,9 +3,9 @@
 **Online theatre ticket booking service**  
 Modern REST API built with **Django REST Framework**, featuring JWT authentication, interactive documentation, and full online ticket booking functionality.
 
-[![Django](https://img.shields.io/badge/Django-4.2%2B-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
-[![DRF](https://img.shields.io/badge/DRF-3.14%2B-A30000?style=for-the-badge&logo=django&logoColor=white)](https://www.django-rest-framework.org/)
-[![DRF Spectacular](https://img.shields.io/badge/DRF_Spectacular-0.27-6C4AB6?style=for-the-badge&logo=swagger&logoColor=white)](https://drf-spectacular.readthedocs.io/)
+[![Django](https://img.shields.io/badge/Django-5.2%2B-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![DRF](https://img.shields.io/badge/DRF-3.16%2B-A30000?style=for-the-badge&logo=django&logoColor=white)](https://www.django-rest-framework.org/)
+[![DRF Spectacular](https://img.shields.io/badge/DRF_Spectacular-0.29-6C4AB6?style=for-the-badge&logo=swagger&logoColor=white)](https://drf-spectacular.readthedocs.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
@@ -134,4 +134,5 @@ ReDoc: http://127.0.0.1:8001/api/schema/redoc/
 
 
 OpenAPI Schema: http://127.0.0.1:8001/api/schema/
+
 
